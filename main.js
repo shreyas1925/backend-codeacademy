@@ -1,10 +1,9 @@
 const express = require("express")
 const app = express()
 const PORT = 8000
-const bodyParser = require('body-parser');
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 let tasks = []
 let id=0
@@ -23,6 +22,18 @@ app.post("/todos",(req,res)=>{
 //get all todos
 app.get("/todos",(req,res)=>{
     res.json(tasks)
+})
+
+//get active tasks
+app.get("/todos/active",(req,res)=>{
+    const task = tasks.filter(todoTask=> todoTask.isComplete==false )
+    res.json(task)
+})
+
+//get completed tasks
+app.get("/todos/completed",(req,res)=>{
+    const task = tasks.filter(todoTask=> todoTask.isComplete==true )
+    res.json(task)
 })
 
 //get todo based on id
