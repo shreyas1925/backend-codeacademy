@@ -1,41 +1,37 @@
 'use strict';
 
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert('Tasks', [
 
       {
-        id:"1",
-        name: 'Learn React',
-        isComplete: false,
+        title: 'Buy books from library',
+        isCompleted: false,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        id:"2",
-        name: 'Learn Node',
-        isComplete: false,
+        title: 'Read books bought from library',
+        isCompleted: false,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        id:"3",
-        name: 'Learn Express',
-        isComplete: false,
+        title: 'Write new books',
+        isCompleted: false,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        id:"4",
-        name: 'Learn MongoDB',
-        isComplete: false,
+        title: 'Publish new books',
+        isCompleted: false,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        id:"5",
-        name: 'Learn React Native',
-        isComplete: false,
+        title: 'Learn React Native',
+        isCompleted: false,
         createdAt: new Date(),
         updatedAt: new Date()
       },
