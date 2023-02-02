@@ -24,12 +24,12 @@ const getTaskById = async (_id) => {
 }
 
 const DeleteTask = async (completed) => {
-    const task = await db.Task.destroy({
+   await db.Task.destroy({
         where: {
             isCompleted: completed,
         }
     })
-    return task
+    return getAllTasks()
 }
 
 const UpdateTaskById = async (id) => {
