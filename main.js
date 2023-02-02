@@ -1,8 +1,11 @@
 const express = require("express")
 const app = express()
 const PORT = 8000
+const {taskRoutes} = require("./routes/taskRoutes.js")
 
 app.use(express.json());
+
+app.use('/todos',taskRoutes)
 
 let tasks = []
 let id=0

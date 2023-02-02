@@ -5,6 +5,8 @@ const url = require('url')
 let db = []
 let id = 0
 
+
+
 const server = http.createServer((req, res) => {
   console.log(req.url);
   const query = url.parse(req.url, true)
