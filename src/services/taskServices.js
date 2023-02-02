@@ -21,12 +21,11 @@ const getTaskById = (id) => {
 }
 
 const DeleteTask = (completed) =>{
-    return tasks.filter(todoTask => todoTask.isComplete !== completed)
-    
+    return tasks.filter(todoTask => todoTask.isComplete !== completed) 
 }
 
 const UpdateTaskById = (id) =>{
-    return tasks.find(task => task.id === id?task.isComplete=true:false)
+    return tasks.find(task => task.id === id?task.isComplete===true:false)
 }
 
 
