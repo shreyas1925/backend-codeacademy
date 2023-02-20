@@ -2,7 +2,7 @@ const db = require('../../database/models');
 
 const getAllTasks = async () => {
     const allTasks = await db.Task.findAll();
-    return allTasks
+    return allTasks;
 };
 
 const addTask = async (userTask) => {
@@ -11,37 +11,37 @@ const addTask = async (userTask) => {
         isCompleted: false,
     };
     const tasks = await db.Task.create(newTask);
-    return tasks
-}
+    return tasks;
+};
 
 const getTaskById = async (_id) => {
     const task = await db.Task.findOne({
         where: {
             id: _id,
         }
-    })
-    return task
-}
+    });
+    return task;
+};
 
 const DeleteTask = async (completed) => {
-   await db.Task.destroy({
+    await db.Task.destroy({
         where: {
             isCompleted: completed,
         }
-    })
-    return getAllTasks()
-}
+    });
+    return getAllTasks();
+};
 
 const UpdateTaskById = async (id) => {
     const task = await db.Task.findOne({
         where: {
             id: id,
         }
-    })
-    task.isCompleted = true
-    await task.save()
-    return task
-}
+    });
+    task.isCompleted = true;
+    await task.save();
+    return task;
+};
 
 
 const getCompletedTask = async () => {
@@ -49,19 +49,19 @@ const getCompletedTask = async () => {
         where: {
             isCompleted: true,
         }
-    })
-    return completedTask
-}
+    });
+    return completedTask;
+};
 
 const getActiveTask = async () => {
     const activeTask = await db.Task.findAll({
         where: {
             isCompleted: false,
         }
-    })
-    return activeTask
+    });
+    return activeTask;
 
-}
+};
 
 module.exports = {
     getAllTasks,
@@ -71,4 +71,4 @@ module.exports = {
     UpdateTaskById,
     getCompletedTask,
     getActiveTask
-}
+};

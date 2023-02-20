@@ -5,8 +5,9 @@ const getAllTasks = async (req,res) => {
     if(!tasks){
         res.status(404).json({message: 'No tasks found'});
     }
-    res.status(200).json(tasks);
-}
+    res.json(tasks).status(200);
+};
+
 
 const addTask = async (req,res) => {
     const task = await tasksServices.addTask(req.body);
@@ -14,7 +15,7 @@ const addTask = async (req,res) => {
         res.status(400).json({message: 'Invalid details'});
     }
     res.status(200).json(task);
-}
+};
 
 const getTaskById = async (req,res) => {
     const id = Number(req.params.id);
@@ -23,28 +24,28 @@ const getTaskById = async (req,res) => {
         res.status(404).json({message: 'Required task not found'});
     }
     res.status(200).json(task);
-}
+};
 
 const UpdateTaskById = async (req,res) => {
     const id = Number(req.params.id);
     const task = await tasksServices.UpdateTaskById(id);
     res.status(200).json(task);
-}
+};
 
 const DeleteTask = async(req,res) => {
-    const completed = Boolean(req.query.isComplete)
+    const completed = Boolean(req.query.isComplete);
     const task = await tasksServices.DeleteTask(completed);
     res.status(200).json(task);
-}
+};
 
 const getCompletedTask = async (req,res) => {
-    const tasks = await tasksServices.getCompletedTask()
+    const tasks = await tasksServices.getCompletedTask();
     res.status(200).json(tasks);
-}
+};
 
 const getActiveTask = async (req,res) => {
-    const tasks = await tasksServices.getActiveTask()
+    const tasks = await tasksServices.getActiveTask();
     res.status(200).json(tasks);
-}
+};
 
-module.exports = { getAllTasks, addTask, getTaskById, UpdateTaskById, DeleteTask,getCompletedTask,getActiveTask }
+module.exports = { getAllTasks, addTask, getTaskById, UpdateTaskById, DeleteTask,getCompletedTask,getActiveTask };
